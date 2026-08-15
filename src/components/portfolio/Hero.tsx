@@ -155,11 +155,11 @@ export function Hero({ morphActive = false }: { morphActive?: boolean }) {
                             fontSize: "clamp(6.5rem, 28vw, 33rem)",
                         }}
                     >
-                        <LetterReveal letter="A" cue={CUE.a} past={past} scrollY={scrollY} />
-                        <LetterReveal letter="F" cue={CUE.f} past={past} scrollY={scrollY} />
-                        <LetterReveal letter="I" cue={CUE.i} past={past} scrollY={scrollY} />
-                        <LetterReveal letter="S" cue={CUE.s} past={past} scrollY={scrollY} />
-                        <LetterReveal letter="H" cue={CUE.h} past={past} scrollY={scrollY} />
+                        <LetterReveal letter="A" cue={CUE.a} past={past} scrollY={morphActive ? 0 : scrollY} />
+                        <LetterReveal letter="F" cue={CUE.f} past={past} scrollY={morphActive ? 0 : scrollY} />
+                        <LetterReveal letter="I" cue={CUE.i} past={past} scrollY={morphActive ? 0 : scrollY} />
+                        <LetterReveal letter="S" cue={CUE.s} past={past} scrollY={morphActive ? 0 : scrollY} />
+                        <LetterReveal letter="H" cue={CUE.h} past={past} scrollY={morphActive ? 0 : scrollY} />
                     </h1>
                 </div>
 

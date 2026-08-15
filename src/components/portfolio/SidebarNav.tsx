@@ -49,9 +49,9 @@ export function SidebarNav() {
             data-sidebar-container
             className="sticky top-6 hidden h-fit w-[clamp(15rem,16vw,18rem)] shrink-0 flex-col gap-3 lg:flex"
         >
-            <div data-slot="wordmark" className="rounded-2xl bg-card p-4">
+            <div className="rounded-2xl bg-card p-4">
                 <div className="flex items-center justify-between">
-                    <span className="rounded-md bg-primary px-2 py-1 font-display text-sm font-black tracking-tight text-primary-foreground">
+                    <span data-slot="wordmark" className="rounded-md bg-primary px-2 py-1 font-display text-sm font-black tracking-tight text-primary-foreground">
                         NESH<sup>®</sup>
                     </span>
                     <div className="flex gap-1">

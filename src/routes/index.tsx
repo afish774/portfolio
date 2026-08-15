@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useRef } from "react";
 import { Reveal } from "@/components/portfolio/Reveal";
 import { SmearTrail } from "@/components/portfolio/SmearTrail";
 import { Hero } from "@/components/portfolio/Hero";
 
 import { Faq } from "@/components/portfolio/Faq";
 import { SidebarNav } from "@/components/portfolio/SidebarNav";
+import {
+    useHeroMorph,
+    useMorphEnabled,
+    MORPH_TRACK_VH,
+} from "@/components/portfolio/useHeroMorph";
 import proj1 from "@/assets/proj-1.jpg";
 import proj2 from "@/assets/proj-2.jpg";
 import proj3 from "@/assets/proj-3.jpg";
@@ -12,25 +18,27 @@ import proj4 from "@/assets/proj-4.jpg";
 import proj5 from "@/assets/proj-5.jpg";
 import proj6 from "@/assets/proj-6.jpg";
 
-export const Route = createFileRoute("/")({
-    head: () => ({
-        meta: [
-            { title: "Nesh — Creative Web Developer & Designer" },
-            {
-                name: "description",
-                content:
-                    "Creative web developer with 7+ years and 80+ shipped projects. Fast, motion-rich, CMS-driven websites for ambitious brands.",
-            },
-            { property: "og:title", content: "Nesh — Creative Web Developer & Designer" },
-            {
-                property: "og:description",
-                content:
-                    "80+ projects across biotech, fintech and hospitality. Design, motion and development, applied differently.",
-            },
-        ],
-    }),
-    component: Index,
-});
+export const Route = createFileRoute("/")(
+    {
+        head: () => ({
+            meta: [
+                { title: "Nesh — Creative Web Developer & Designer" },
+                {
+                    name: "description",
+                    content:
+                        "Creative web developer with 7+ years and 80+ shipped projects. Fast, motion-rich, CMS-driven websites for ambitious brands.",
+                },
+                { property: "og:title", content: "Nesh — Creative Web Developer & Designer" },
+                {
+                    property: "og:description",
+                    content:
+                        "80+ projects across biotech, fintech and hospitality. Design, motion and development, applied differently.",
+                },
+            ],
+        }),
+        component: Index,
+    },
+);
 
 const PROJECTS = [
     {
@@ -148,14 +156,62 @@ const CLIENTS = [
 ];
 
 function Index() {
-    return (
-        <div className="min-h-screen bg-background">
-            <Hero />
+    const rootRef = useRef<HTMLDivElement>(null);
+    const morphEnabled = useMorphEnabled();
+    const morphReady = useHeroMorph(morphEnabled, rootRef);
 
-            <div className="relative z-10 mx-auto flex max-w-[110rem] gap-8 px-4 pt-12 pb-28 sm:px-6">
+    return (
+        <div ref={rootRef} className="min-h-screen bg-background">
+            {/*
+             * When the morph is enabled the hero section is pinned via
+             * position: sticky so it stays in place while the scroll-track
+             * spacer scrolls past. The spacer's height equals MORPH_TRACK_VH
+             * and gives the FLIP engine its full animation range.
+             *
+             * On mobile / reduced-motion the spacer is 0-height and the hero
+             * flows normally.
+             */}
+            <div
+                data-hero-container
+                style={{
+                    position: morphEnabled ? "sticky" : "relative",
+                    top: morphEnabled ? 0 : undefined,
+                    zIndex: morphEnabled ? 10 : 1,
+                }}
+            >
+                <Hero morphActive={morphReady} />
+            </div>
+
+            {/* Scroll-track spacer: provides the scrollable distance during
+                which the hero stays pinned and FLIP pairs animate. Hidden
+                (height 0) on mobile or when reduced-motion is preferred. */}
+            <div
+                className="morph-track"
+                style={{
+                    height: morphEnabled ? `${MORPH_TRACK_VH}vh` : 0,
+                }}
+                aria-hidden="true"
+            />
+
+            {/* Content area: container starts at top: 0 when morphEnabled so SidebarNav
+                is stationary at sticky top: 24px from scrollY = 0, while main sections
+                are spaced after the hero and morph track. */}
+            <div
+                className="relative z-20 mx-auto flex max-w-[110rem] gap-8 px-4 sm:px-6"
+                style={{
+                    marginTop: morphEnabled ? `calc(-100vh - ${MORPH_TRACK_VH}vh)` : undefined,
+                    paddingTop: morphEnabled ? "1.5rem" : "3rem",
+                    paddingBottom: "7rem",
+                }}
+            >
                 <SidebarNav />
 
-                <main className="min-w-0 flex-1 space-y-32 md:space-y-40">
+                <main
+                    className="min-w-0 flex-1 space-y-32 md:space-y-40"
+                    style={{
+                        paddingTop: morphEnabled ? `calc(100vh + ${MORPH_TRACK_VH}vh)` : undefined,
+                    }}
+                >
                     <section id="about" className="scroll-mt-24 pt-10">
                         <Reveal>
                             <SmearTrail>

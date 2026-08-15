@@ -230,3 +230,7 @@
     line-height: 1.62;
     color: var(--color-muted-foreground);
 }
+
+@utility morph-track {
+    pointer-events: none;
+}
