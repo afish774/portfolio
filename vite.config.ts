@@ -5,9 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     server: {
-        allowedHosts: [
-            "9d470975-ca12-4c34-95e3-70fccaf7e8a5-00-21yyy0sfxb1cf.sisko.replit.dev",
-        ],
+        allowedHosts: true,
     },
     plugins: [
         tanstackStart(),
