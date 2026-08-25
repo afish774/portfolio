@@ -143,6 +143,7 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
     * {
@@ -169,6 +170,13 @@
         font-weight: 800;
         letter-spacing: 0;
         text-wrap: balance;
+    }
+
+    /* Remove tap highlight flash on mobile for all interactive elements */
+    a,
+    button {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 }
 
@@ -233,4 +241,44 @@
 
 @utility morph-track {
     pointer-events: none;
+}
+
+/* Lenis smooth scroll integration */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Disable marquee animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}
+
+/* Hide scrollbar across all browsers */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
