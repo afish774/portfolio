@@ -271,16 +271,29 @@ function NavGroup({ items }: { items: { label: string; href: string; morphKey?: 
 function MobileNav() {
     const allItems = [...LEFT_NAV, ...RIGHT_NAV];
     return (
-        <div className="flex lg:hidden flex-wrap justify-center gap-2">
-            {allItems.map((item) => (
-                <a
-                    key={item.label}
-                    href={item.href}
-                    className="rounded-full border border-white/15 bg-white/[0.07] backdrop-blur-sm px-4 py-2 text-[0.7rem] sm:text-[0.8rem] font-bold uppercase tracking-wider text-foreground/80 transition-all duration-300 hover:bg-primary/15 hover:border-primary/30 hover:text-primary active:scale-95"
-                >
-                    {item.label}
-                </a>
-            ))}
+        <div className="flex lg:hidden w-full max-w-[28rem] flex-col gap-2 px-2">
+            <div className="grid grid-cols-3 gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md">
+                {LEFT_NAV.map((item) => (
+                    <a
+                        key={item.label}
+                        href={item.href}
+                        className="flex items-center justify-center rounded-xl py-2.5 text-[0.65rem] sm:text-[0.75rem] font-bold uppercase tracking-widest text-white/70 transition-all duration-300 hover:bg-white/10 hover:text-white active:scale-95"
+                    >
+                        {item.label}
+                    </a>
+                ))}
+            </div>
+            <div className="grid grid-cols-4 gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md">
+                {RIGHT_NAV.map((item) => (
+                    <a
+                        key={item.label}
+                        href={item.href}
+                        className="flex items-center justify-center rounded-xl py-2.5 text-[0.6rem] sm:text-[0.7rem] font-bold uppercase tracking-widest text-white/70 transition-all duration-300 hover:bg-white/10 hover:text-white active:scale-95"
+                    >
+                        {item.label.split(' ')[0]} {/* Shorten for mobile if needed, e.g. "What You Get" -> "What" */}
+                    </a>
+                ))}
+            </div>
         </div>
     );
 }
@@ -358,8 +371,14 @@ function HeroSidebar() {
                 </div>
             </div>
 
-            <nav className="flex flex-col gap-1.5 rounded-xl bg-card p-2.5">
+            <nav className="relative flex flex-col gap-1.5 rounded-xl bg-card p-2.5 overflow-hidden">
+                {/* The sliding dark background that the user requested */}
+                <div className="absolute inset-0 bg-[#111111] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
+                     style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
+
                 {SECTIONS.map(({ id, label, Icon }) => {
+                    const isActive = active === id;
+                    const isDarkSection = active === "projects";
                     return (
                         <a
                             key={id}
@@ -372,13 +391,19 @@ function HeroSidebar() {
                                     else window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                             }}
-                            className={`flex items-center gap-3.5 rounded-lg px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors ${active === id && id !== "home"
-                                ? "bg-primary/10 text-primary"
-                                : "text-foreground hover:bg-muted"
-                                }`}
+                            className="relative flex items-center gap-3.5 rounded-lg px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
                         >
-                            <Icon data-icon-for={`nav-${id}`} className="h-4 w-4 shrink-0" strokeWidth={2.5} />
-                            <span data-slot={`nav-${id}`} className="block">{label}</span>
+                            {/* Sliding active indicator */}
+                            {isActive && id !== "home" && (
+                                <motion.div
+                                    layoutId="sidebar-active-pill"
+                                    className="absolute inset-0 rounded-lg bg-[#FAFF00] -z-10"
+                                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                                />
+                            )}
+                            
+                            <Icon data-icon-for={`nav-${id}`} className={`h-4 w-4 shrink-0 transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white" : "text-foreground group-hover:text-primary"}`} strokeWidth={2.5} />
+                            <span data-slot={`nav-${id}`} className={`block transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white" : "text-foreground group-hover:text-primary"}`}>{label}</span>
                         </a>
                     );
                 })}

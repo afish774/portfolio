@@ -1168,13 +1168,11 @@ function Index() {
                         </div>
                     </section>
 
-                    <Reveal><section id="projects" className="scroll-mt-24">
+                    <Reveal><section id="projects" className="scroll-mt-24 w-full bg-[#111111] text-white py-24 px-[clamp(1rem,2.8vw,3.5rem)] rounded-[2.5rem] mt-24 mb-12">
                         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-                            <h2 className="display-lg max-w-2xl">Built with care, Made to Perform</h2>
-                            <p className="body-copy max-w-md">
-                                Over 80 projects across biotech, civic tech, hospitality and fintech — helping teams
-                                in very different industries turn their ideas into websites that look and work
-                                exactly how they imagined. Here's some of that work.
+                            <h2 className="display-lg max-w-2xl text-white">Built in Webflow,<br />Made to Perform</h2>
+                            <p className="text-[1.05rem] leading-[1.6] text-white/70 max-w-md pb-2">
+                                Over seven years I've helped businesses across different industries turn their ideas into websites that look and work exactly how they imagined. Here's a look at some of that work.
                             </p>
                         </div>
 
@@ -1182,41 +1180,45 @@ function Index() {
                             {PROJECTS.map((p, i) => (
                                 <Reveal key={p.name} delay={i * 100} y={40} scale={0.96}>
                                     <article
-                                        className="group relative overflow-hidden rounded-3xl bg-surface-dark transition-all duration-500 hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1"
+                                        className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50 hover:-translate-y-2 hover:bg-white/10"
                                     >
-                                        <div className="flex items-center justify-between p-4">
-                                            <span className="rounded-full bg-surface-dark-foreground/10 px-2.5 py-1 text-[0.65rem] font-semibold tracking-wide text-surface-dark-foreground/70">
+                                        <div className="flex items-center justify-between p-5 absolute top-0 inset-x-0 z-10 pointer-events-none">
+                                            <span className="rounded-full bg-black/40 backdrop-blur-md px-3 py-1.5 text-[0.7rem] font-bold tracking-wide text-white border border-white/20">
                                                 {p.n}
                                             </span>
-                                            <div className="flex flex-wrap justify-end gap-1">
+                                            <div className="flex flex-wrap justify-end gap-1.5">
                                                 {p.tags.map((tag) => (
                                                     <span
                                                         key={tag}
-                                                        className="rounded-full bg-surface-dark-foreground/10 px-2.5 py-1 text-[0.65rem] font-semibold tracking-wide text-surface-dark-foreground/70"
+                                                        className="rounded-full bg-black/40 backdrop-blur-md px-3 py-1.5 text-[0.7rem] font-bold tracking-wide text-white/90 border border-white/20"
                                                     >
                                                         {tag}
                                                     </span>
                                                 ))}
                                             </div>
                                         </div>
-                                        <img
-                                            src={p.img}
-                                            alt={`${p.name} project preview`}
-                                            loading="lazy"
-                                            decoding="async"
-                                            width={900}
-                                            height={560}
-                                            className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                        <div className="flex items-end justify-between gap-4 p-6">
-                                            <div className="min-w-0">
-                                                <h3 className="text-[1.7rem] leading-none font-black tracking-[-0.04em] text-surface-dark-foreground">{p.name}</h3>
-                                                <p className="mt-3 text-[0.875rem] leading-[1.55] text-surface-dark-foreground/60">
+                                        <div className="overflow-hidden">
+                                            <img
+                                                src={p.img}
+                                                alt={`${p.name} project preview`}
+                                                loading="lazy"
+                                                decoding="async"
+                                                width={900}
+                                                height={560}
+                                                className="h-[18rem] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110"
+                                            />
+                                        </div>
+                                        <div className="flex items-end justify-between gap-4 p-7 bg-gradient-to-t from-black/80 to-transparent relative -mt-16 pt-20">
+                                            <div className="min-w-0 z-10">
+                                                <h3 className="text-[2rem] leading-none font-black tracking-[-0.04em] text-white group-hover:text-[#FAFF00] transition-colors duration-500">{p.name}</h3>
+                                                <p className="mt-3 text-[0.95rem] leading-[1.6] text-white/70 font-medium line-clamp-2">
                                                     {p.desc}
                                                 </p>
                                             </div>
-                                            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
-                                                ↗
+                                            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 transition-all duration-500 group-hover:bg-[#FAFF00] group-hover:text-black group-hover:scale-110 group-hover:rotate-45 z-10">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 13L13 1M13 1H3.4M13 1V10.6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                </svg>
                                             </span>
                                         </div>
                                     </article>

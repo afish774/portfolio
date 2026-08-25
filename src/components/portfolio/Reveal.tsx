@@ -190,8 +190,8 @@ export function CardScrollReveal({ children, className = "" }: { children: React
 
     // Apply physical momentum to the scroll progress for a buttery smooth parallax effect
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 80,
-        damping: 20,
+        stiffness: 100,
+        damping: 30,
         restDelta: 0.001
     });
 
@@ -210,7 +210,8 @@ export function CardScrollReveal({ children, className = "" }: { children: React
                 scale,
                 rotateX,
                 transformOrigin: "50% 100%",
-                perspective: 1200
+                perspective: 1200,
+                willChange: "transform, opacity"
             }}
         >
             {children}
@@ -226,8 +227,8 @@ export function CheckpointScrollReveal({ children, className = "" }: { children:
     });
 
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 80,
-        damping: 20,
+        stiffness: 100,
+        damping: 30,
         restDelta: 0.001
     });
 
@@ -244,7 +245,8 @@ export function CheckpointScrollReveal({ children, className = "" }: { children:
                 y,
                 opacity,
                 scale,
-                transformOrigin: "50% 100%"
+                transformOrigin: "50% 100%",
+                willChange: "transform, opacity"
             }}
         >
             {children}
