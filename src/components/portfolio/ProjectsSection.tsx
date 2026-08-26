@@ -115,13 +115,13 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                                 <span className="inline-block rounded-full border border-white/20 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-white/60">
                                     Selected Work
                                 </span>
-                                <h2 className="mt-6 text-6xl lg:text-8xl font-black tracking-tighter text-white mb-16 leading-[1.05]">
+                                <h2 className="mt-6 text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[1.05]">
                                     Built in Webflow,
                                     <br />
                                     Made to Perform
                                 </h2>
                             </div>
-                            <p className="max-w-sm pb-16 text-[0.95rem] leading-[1.7] text-white/55">
+                            <p className="max-w-sm pb-4 text-[0.95rem] leading-[1.7] text-white/55">
                                 Over seven years I've helped businesses across different industries turn
                                 their ideas into websites that look and work exactly how they imagined.
                                 Here's a look at some of that work.
@@ -131,7 +131,7 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                 </div>
 
                 {/* ── Horizontal Track ────────────────────────────── */}
-                <div className="mt-auto pt-12">
+                <div className="mt-auto pt-4">
                     <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                         <div
                             ref={trackRef}

@@ -328,7 +328,7 @@ export function HeroSidebar() {
             className="hidden h-fit w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 lg:flex pb-8 pointer-events-auto"
             style={{ opacity: 0 }}
         >
-            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5 p-6" : "bg-card rounded-xl border border-transparent"}`}>
+            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -378,8 +378,7 @@ export function HeroSidebar() {
                 </div>
             </div>
 
-            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}
-                 style={{ WebkitMaskImage: isDarkSection ? 'linear-gradient(to bottom, black 60%, transparent 100%)' : 'none', maskImage: isDarkSection ? 'linear-gradient(to bottom, black 60%, transparent 100%)' : 'none' }}>
+            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
                 {/* The sliding dark background that the user requested */}
                 <div className="absolute inset-0 bg-[#1a1a1a] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
