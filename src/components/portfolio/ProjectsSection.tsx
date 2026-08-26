@@ -100,12 +100,12 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
     }, []);
 
     return (
-        <section
-            ref={sectionRef}
-            id="projects"
-            className="relative scroll-mt-24 overflow-hidden bg-[#0f0f0f] text-white"
-        >
-            <div className="flex min-h-screen flex-col pt-4 lg:pt-8 pb-4">
+        <div id="projects" className="scroll-mt-24">
+            <section
+                ref={sectionRef}
+                className="relative overflow-hidden bg-[#0f0f0f] text-white"
+            >
+                <div className="flex min-h-screen flex-col pt-4 lg:pt-8 pb-4">
                 {/* ── Header ──────────────────────────────────────── */}
                 <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                     {/* Offset to match the sidebar placeholder width */}
@@ -145,5 +145,6 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                 </div>
             </div>
         </section>
+        </div>
     );
 }

@@ -303,20 +303,34 @@ export function HeroSidebar() {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const visible = entries
-                    .filter((e) => e.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-                if (visible) setActive(visible.target.id);
-            },
-            { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
-        );
-        SECTIONS.forEach(({ id }) => {
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
-        });
-        return () => observer.disconnect();
+        let ticking = false;
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const centerLine = window.innerHeight / 2;
+                    let found = false;
+                    for (let i = SECTIONS.length - 1; i >= 0; i--) {
+                        const el = document.getElementById(SECTIONS[i].id);
+                        if (el) {
+                            const rect = el.getBoundingClientRect();
+                            if (rect.top <= centerLine) {
+                                setActive(SECTIONS[i].id);
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!found && SECTIONS.length > 0) setActive(SECTIONS[0].id);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Initial check
+
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const isDarkSection = active === "projects";
