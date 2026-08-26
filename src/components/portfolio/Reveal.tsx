@@ -255,18 +255,23 @@ export function CheckpointScrollReveal({ children, className = "" }: { children:
 }
 
 export function PremiumLineReveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+    const ref = useRef<HTMLSpanElement>(null);
+    
+    const offsetStart = 85 - (delay / 25);
+    const offsetEnd = offsetStart - 15;
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: [`start ${offsetStart}%`, `start ${offsetEnd}%`]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ["110%", "0%"]);
+
     return (
-        <span className={`block overflow-hidden ${className}`}>
+        <span ref={ref} className={`block overflow-hidden ${className}`}>
             <motion.span
                 className="block"
-                initial={{ y: "110%" }}
-                whileInView={{ y: "0%" }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{
-                    duration: 1.1,
-                    ease: [0.16, 1, 0.3, 1],
-                    delay: delay / 1000,
-                }}
+                style={{ y }}
             >
                 {children}
             </motion.span>
