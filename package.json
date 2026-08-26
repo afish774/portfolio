@@ -37,6 +37,7 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1",
     "typescript": "^5",
-    "vite": "^8"
+    "vite": "^8",
+    "vite-imagetools": "^12.0.0"
   }
 }
