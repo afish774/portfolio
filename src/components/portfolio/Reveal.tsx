@@ -265,13 +265,19 @@ export function PremiumLineReveal({ children, delay = 0, className = "" }: { chi
         offset: [`start ${offsetStart}%`, `start ${offsetEnd}%`]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["110%", "0%"]);
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    const y = useTransform(smoothProgress, [0, 1], ["110%", "0%"]);
 
     return (
         <span ref={ref} className={`block overflow-hidden ${className}`}>
             <motion.span
                 className="block"
-                style={{ y }}
+                style={{ y, willChange: "transform" }}
             >
                 {children}
             </motion.span>
