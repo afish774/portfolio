@@ -254,3 +254,22 @@ export function CheckpointScrollReveal({ children, className = "" }: { children:
     );
 }
 
+export function PremiumLineReveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+    return (
+        <span className={`block overflow-hidden ${className}`}>
+            <motion.span
+                className="block"
+                initial={{ y: "110%" }}
+                whileInView={{ y: "0%" }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{
+                    duration: 1.1,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: delay / 1000,
+                }}
+            >
+                {children}
+            </motion.span>
+        </span>
+    );
+}

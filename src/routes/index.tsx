@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { X, Check, Home } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Reveal, LineReveal, RollingYear, CardScrollReveal, CheckpointScrollReveal } from "@/components/portfolio/Reveal";
+import { Reveal, LineReveal, PremiumLineReveal, RollingYear, CardScrollReveal, CheckpointScrollReveal } from "@/components/portfolio/Reveal";
 import { TimelineThread } from "@/components/portfolio/TimelineThread";
 import { Hero } from "@/components/portfolio/Hero";
 
@@ -228,8 +228,8 @@ function Index() {
                                 <SectionLabel>Start small grow big</SectionLabel>
                             </LineReveal>
                             <h2 className="mt-6 display-lg">
-                                <LineReveal delay={150}>About Me (&amp;)</LineReveal>
-                                <LineReveal delay={300}>My Journey</LineReveal>
+                                <PremiumLineReveal delay={0}>About Me (&amp;)</PremiumLineReveal>
+                                <PremiumLineReveal delay={150}>My Journey</PremiumLineReveal>
                             </h2>
                             <LineReveal delay={450}>
                                 <p className="mt-6 max-w-md body-copy">
