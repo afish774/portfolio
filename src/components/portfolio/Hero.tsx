@@ -319,13 +319,16 @@ export function HeroSidebar() {
         return () => observer.disconnect();
     }, []);
 
+    const isDarkSection = active === "projects";
+    const transitionClass = "transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]";
+
     return (
         <aside
             data-sidebar-container
             className="hidden h-fit w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 lg:flex pb-8 pointer-events-auto"
             style={{ opacity: 0 }}
         >
-            <div className="rounded-xl bg-card p-5">
+            <div className={`rounded-xl p-5 ${transitionClass} ${isDarkSection ? "bg-[#111111]" : "bg-card"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -347,38 +350,41 @@ export function HeroSidebar() {
                                 data-slot={`social-${id}`}
                                 href={href}
                                 aria-label={`Social ${id}`}
-                                className="grid h-8 w-8 place-items-center rounded-md border border-white/10 bg-white/5 text-muted-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                                className={`grid h-8 w-8 place-items-center rounded-md border transition-colors ${
+                                    isDarkSection 
+                                        ? "border-white/10 bg-white/10 text-white/70 hover:bg-primary hover:text-black" 
+                                        : "border-white/10 bg-white/5 text-muted-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                                }`}
                             >
                                 <Icon className="h-4 w-4" />
                             </a>
                         ))}
                     </div>
                 </div>
-                <p data-fade className="mt-6 text-sm leading-relaxed text-muted-foreground text-left">
+                <p data-fade className={`mt-6 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/70" : "text-muted-foreground"}`}>
                     Working closely with your team to deliver builds that merge creativity, technical
                     excellence, and long-term value.
                 </p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-                <div data-slot="stat-1" className="relative flex flex-col items-center justify-center rounded-xl bg-card p-5 overflow-hidden border border-white/5 shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent">
-                    <p className="font-display text-4xl font-black text-primary">80+</p>
-                    <p className="mt-2 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Projects<br />Delivered</p>
+                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center rounded-xl p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent ${transitionClass} ${isDarkSection ? "bg-[#111111] border-white/10" : "bg-card border-white/5"}`}>
+                    <p className="font-display text-4xl font-black text-primary z-10">80+</p>
+                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
-                <div data-slot="stat-2" className="relative flex flex-col items-center justify-center rounded-xl bg-card p-5 overflow-hidden border border-white/5 shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent">
-                    <p className="font-display text-4xl font-black text-primary">7+</p>
-                    <p className="mt-2 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Years of<br />Experience</p>
+                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center rounded-xl p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent ${transitionClass} ${isDarkSection ? "bg-[#111111] border-white/10" : "bg-card border-white/5"}`}>
+                    <p className="font-display text-4xl font-black text-primary z-10">7+</p>
+                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
 
-            <nav className="relative flex flex-col gap-1.5 rounded-xl bg-card p-2.5 overflow-hidden">
+            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#111111]" : "bg-card"}`}>
                 {/* The sliding dark background that the user requested */}
                 <div className="absolute inset-0 bg-[#111111] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
 
                 {SECTIONS.map(({ id, label, Icon }) => {
                     const isActive = active === id;
-                    const isDarkSection = active === "projects";
                     return (
                         <a
                             key={id}
@@ -414,7 +420,7 @@ export function HeroSidebar() {
                     {[...LOGOS, ...LOGOS].map((logo, i) => (
                         <span
                             key={`${logo}-${i}`}
-                            className="whitespace-nowrap text-xs font-black uppercase tracking-widest text-foreground"
+                            className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
                         >
                             {logo}
                         </span>
@@ -430,7 +436,7 @@ export function HeroSidebar() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1500);
                 }}
-                className="flex items-center justify-between rounded-xl bg-card px-5 py-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className={`flex items-center justify-between rounded-xl px-5 py-4 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-white/10 text-white/90 hover:bg-white/20" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
             >
                 <span>hello@afish.com</span>
                 <span className="font-bold">{copied ? "✓" : "⧉"}</span>
