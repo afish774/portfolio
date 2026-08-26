@@ -328,7 +328,7 @@ export function HeroSidebar() {
             className="hidden h-fit w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 lg:flex pb-8 pointer-events-auto"
             style={{ opacity: 0 }}
         >
-            <div className={`rounded-xl p-5 ${transitionClass} ${isDarkSection ? "bg-[#111111]" : "bg-card"}`}>
+            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5 p-6" : "bg-card rounded-xl border border-transparent"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -337,7 +337,7 @@ export function HeroSidebar() {
                             if (window.lenis) window.lenis.scrollTo(document.documentElement, { duration: 2.2 });
                             else window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className="rounded-md bg-primary px-3 py-1.5 font-display text-lg font-black tracking-tight text-black transition-colors duration-500 ease-in-out hover:bg-primary/0"
+                        className={`rounded-md px-3 py-1.5 font-display text-lg font-black tracking-tight text-black transition-colors duration-500 ease-in-out hover:bg-primary/0 ${isDarkSection ? "bg-[#ffeb3b]" : "bg-primary"}`}
                     >
                         <span className="flex items-start">
                             AFISH<sup className="ml-[1px] mt-[4px] text-[10px] opacity-80 leading-none">®</sup>
@@ -352,7 +352,7 @@ export function HeroSidebar() {
                                 aria-label={`Social ${id}`}
                                 className={`grid h-8 w-8 place-items-center rounded-md border transition-colors ${
                                     isDarkSection 
-                                        ? "border-white/10 bg-white/10 text-white/70 hover:bg-primary hover:text-black" 
+                                        ? "border-white/10 bg-white/10 text-white/70 hover:bg-[#ffeb3b] hover:text-black" 
                                         : "border-white/10 bg-white/5 text-muted-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                                 }`}
                             >
@@ -361,26 +361,27 @@ export function HeroSidebar() {
                         ))}
                     </div>
                 </div>
-                <p data-fade className={`mt-6 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/70" : "text-muted-foreground"}`}>
+                <p data-fade className={`mt-6 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
                     Working closely with your team to deliver builds that merge creativity, technical
                     excellence, and long-term value.
                 </p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center rounded-xl p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent ${transitionClass} ${isDarkSection ? "bg-[#111111] border-white/10" : "bg-card border-white/5"}`}>
-                    <p className="font-display text-4xl font-black text-primary z-10">80+</p>
+                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>80+</p>
                     <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
-                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center rounded-xl p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent ${transitionClass} ${isDarkSection ? "bg-[#111111] border-white/10" : "bg-card border-white/5"}`}>
-                    <p className="font-display text-4xl font-black text-primary z-10">7+</p>
+                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>7+</p>
                     <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
 
-            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#111111]" : "bg-card"}`}>
+            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}
+                 style={{ WebkitMaskImage: isDarkSection ? 'linear-gradient(to bottom, black 60%, transparent 100%)' : 'none', maskImage: isDarkSection ? 'linear-gradient(to bottom, black 60%, transparent 100%)' : 'none' }}>
                 {/* The sliding dark background that the user requested */}
-                <div className="absolute inset-0 bg-[#111111] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
+                <div className="absolute inset-0 bg-[#1a1a1a] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
 
                 {SECTIONS.map(({ id, label, Icon }) => {
@@ -397,19 +398,19 @@ export function HeroSidebar() {
                                     else window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                             }}
-                            className="relative flex items-center gap-3.5 rounded-lg px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
+                            className="relative flex items-center gap-3.5 rounded-full px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
                         >
                             {/* Sliding active indicator */}
                             {isActive && id !== "home" && (
                                 <motion.div
                                     layoutId="sidebar-active-pill"
-                                    className="absolute inset-0 rounded-lg bg-[#FAFF00] -z-10"
+                                    className={`absolute inset-0 rounded-full -z-10 ${isDarkSection ? "bg-[#ffeb3b]" : "bg-[#FAFF00]"}`}
                                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                                 />
                             )}
                             
-                            <Icon data-icon-for={`nav-${id}`} className={`h-4 w-4 shrink-0 transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white" : "text-foreground group-hover:text-primary"}`} strokeWidth={2.5} />
-                            <span data-slot={`nav-${id}`} className={`block transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white" : "text-foreground group-hover:text-primary"}`}>{label}</span>
+                            <Icon data-icon-for={`nav-${id}`} className={`h-4 w-4 shrink-0 transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white/70 hover:text-white" : "text-foreground group-hover:text-primary"}`} strokeWidth={2.5} />
+                            <span data-slot={`nav-${id}`} className={`block transition-colors duration-300 ${isActive && id !== "home" ? "text-black font-bold" : isDarkSection ? "text-white/70 hover:text-white" : "text-foreground group-hover:text-primary"}`}>{label}</span>
                         </a>
                     );
                 })}
@@ -436,7 +437,7 @@ export function HeroSidebar() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1500);
                 }}
-                className={`flex items-center justify-between rounded-xl px-5 py-4 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-white/10 text-white/90 hover:bg-white/20" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                className={`flex items-center justify-between rounded-xl px-5 py-4 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
             >
                 <span>hello@afish.com</span>
                 <span className="font-bold">{copied ? "✓" : "⧉"}</span>

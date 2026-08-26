@@ -21,16 +21,18 @@ function ProjectCard({ project }: { project: ProjectData }) {
             href={project.url ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex w-[28rem] shrink-0 flex-col rounded-2xl border border-white/[0.06] bg-[#141414] p-5 transition-colors duration-300 hover:bg-[#1c1c1c]"
+            className="group relative flex w-[420px] h-[600px] shrink-0 flex-col rounded-[2.5rem] border border-white/5 bg-[#161616] p-8 transition-colors duration-300 hover:bg-[#1c1c1c] overflow-hidden"
         >
             {/* Top Row: Number + Tags */}
-            <div className="mb-3 flex items-center justify-between">
-                <span className="text-sm font-semibold text-white/40">{project.n}</span>
+            <div className="flex items-center justify-between">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-xs font-semibold text-white/70">
+                    {project.n}
+                </span>
                 <div className="flex gap-1.5">
                     {project.tags.map((tag) => (
                         <span
                             key={tag}
-                            className="rounded-full border border-white/15 px-3 py-1 text-[0.7rem] font-medium text-white/60"
+                            className="rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium text-white/70"
                         >
                             {tag}
                         </span>
@@ -39,7 +41,7 @@ function ProjectCard({ project }: { project: ProjectData }) {
             </div>
 
             {/* Media */}
-            <div className="h-72 w-full overflow-hidden rounded-xl bg-gradient-to-br from-purple-900/40 to-black">
+            <div className="mb-8 mt-6 h-[55%] w-full shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-800 to-black">
                 <img
                     src={project.img}
                     alt={`${project.name} project preview`}
@@ -50,19 +52,15 @@ function ProjectCard({ project }: { project: ProjectData }) {
             </div>
 
             {/* Text */}
-            <h3 className="mt-5 text-[1.75rem] font-bold tracking-tight text-white leading-tight">{project.name}</h3>
-            <p className="mt-2 pr-14 text-sm leading-relaxed text-white/45">{project.desc}</p>
+            <div className="flex flex-col flex-1">
+                <h3 className="mb-3 text-3xl font-bold tracking-tight text-white leading-tight">{project.name}</h3>
+                <p className="pr-14 text-sm leading-relaxed text-white/60">{project.desc}</p>
+            </div>
 
             {/* FAB — Yellow Arrow */}
-            <span className="absolute bottom-5 right-5 grid h-11 w-11 place-items-center rounded-full bg-[#FAFF00] text-black transition-all duration-300 group-hover:scale-110">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M1 13L13 1M13 1H3.4M13 1V10.6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    />
+            <span className="absolute bottom-8 right-8 grid h-14 w-14 place-items-center rounded-full bg-[#ffeb3b] text-black transition-transform duration-300 ease-out group-hover:scale-110">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17l9.2-9.2M17 17V7H7" />
                 </svg>
             </span>
         </a>
@@ -105,7 +103,7 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
         <section
             ref={sectionRef}
             id="projects"
-            className="relative scroll-mt-24 overflow-hidden bg-[#0a0a0a] text-white"
+            className="relative scroll-mt-24 overflow-hidden bg-[#0f0f0f] text-white"
         >
             <div className="flex min-h-screen flex-col justify-between py-16 lg:py-20">
                 {/* ── Header ──────────────────────────────────────── */}
@@ -117,13 +115,13 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                                 <span className="inline-block rounded-full border border-white/20 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-white/60">
                                     Selected Work
                                 </span>
-                                <h2 className="mt-6 text-[clamp(2.8rem,5.5vw,5rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+                                <h2 className="mt-6 text-6xl lg:text-8xl font-black tracking-tighter text-white mb-16 leading-[1.05]">
                                     Built in Webflow,
                                     <br />
                                     Made to Perform
                                 </h2>
                             </div>
-                            <p className="max-w-sm pb-2 text-[0.95rem] leading-[1.7] text-white/55">
+                            <p className="max-w-sm pb-16 text-[0.95rem] leading-[1.7] text-white/55">
                                 Over seven years I've helped businesses across different industries turn
                                 their ideas into websites that look and work exactly how they imagined.
                                 Here's a look at some of that work.
@@ -137,7 +135,7 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                     <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                         <div
                             ref={trackRef}
-                            className="flex gap-5 lg:pl-[calc(clamp(14.5rem,15vw,17rem)+2rem)]"
+                            className="flex gap-8 lg:pl-[calc(clamp(14.5rem,15vw,17rem)+2rem)]"
                             style={{ willChange: "transform" }}
                         >
                             {projects.map((p) => (
