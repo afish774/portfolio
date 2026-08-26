@@ -21,7 +21,7 @@ function ProjectCard({ project }: { project: ProjectData }) {
             href={project.url ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex w-[420px] h-[600px] shrink-0 flex-col rounded-[2.5rem] border border-white/5 bg-[#161616] p-8 transition-colors duration-300 hover:bg-[#1c1c1c] overflow-hidden"
+            className="group relative flex w-[350px] lg:w-[420px] h-[clamp(350px,60vh,550px)] shrink-0 flex-col rounded-[2.5rem] border border-white/5 bg-[#161616] p-6 lg:p-8 transition-colors duration-300 hover:bg-[#1c1c1c] overflow-hidden"
         >
             {/* Top Row: Number + Tags */}
             <div className="flex items-center justify-between">
@@ -105,33 +105,32 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
             id="projects"
             className="relative scroll-mt-24 overflow-hidden bg-[#0f0f0f] text-white"
         >
-            <div className="flex min-h-screen flex-col justify-between py-16 lg:py-20">
+            <div className="flex min-h-screen flex-col pt-4 lg:pt-8 pb-4">
                 {/* ── Header ──────────────────────────────────────── */}
                 <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                     {/* Offset to match the sidebar placeholder width */}
                     <div className="lg:pl-[calc(clamp(14.5rem,15vw,17rem)+2rem)]">
-                        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                        <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
                             <div>
                                 <span className="inline-block rounded-full border border-white/20 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-white/60">
                                     Selected Work
                                 </span>
-                                <h2 className="mt-6 text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[1.05]">
+                                <h2 className="mt-2 text-[3rem] leading-none lg:text-8xl font-black tracking-tighter text-white mb-2 lg:leading-[1.05]">
                                     Built in Webflow,
                                     <br />
                                     Made to Perform
                                 </h2>
                             </div>
-                            <p className="max-w-sm pb-4 text-[0.95rem] leading-[1.7] text-white/55">
+                            <p className="max-w-sm pb-2 text-[0.95rem] leading-[1.7] text-white/55 z-10 relative">
                                 Over seven years I've helped businesses across different industries turn
                                 their ideas into websites that look and work exactly how they imagined.
-                                Here's a look at some of that work.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {/* ── Horizontal Track ────────────────────────────── */}
-                <div className="mt-auto pt-4">
+                <div className="-mt-4 lg:-mt-12 lg:mb-auto">
                     <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                         <div
                             ref={trackRef}
