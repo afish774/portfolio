@@ -298,7 +298,7 @@ function MobileNav() {
     );
 }
 
-function HeroSidebar() {
+export function HeroSidebar() {
     const [active, setActive] = useState("home");
     const [copied, setCopied] = useState(false);
 
@@ -456,13 +456,6 @@ export function Hero({ morphActive = false }: { morphActive?: boolean }) {
 
     return (
         <>
-            {/* unified sidebar rendered directly inside Hero! */}
-            <div className="pointer-events-none absolute inset-0 z-40 mx-auto hidden max-w-[110rem] px-4 sm:px-6 lg:block h-screen">
-                <div className="pt-[1.5rem]">
-                    <HeroSidebar />
-                </div>
-            </div>
-
             <section data-hero-container id="home" className="relative h-[100svh] overflow-hidden bg-background">
                 <div data-fx="orbs" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
                     <div

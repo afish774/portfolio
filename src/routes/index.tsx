@@ -4,7 +4,7 @@ import { X, Check, Home } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal, LineReveal, PremiumLineReveal, RollingYear, CardScrollReveal, CheckpointScrollReveal } from "@/components/portfolio/Reveal";
 import { TimelineThread } from "@/components/portfolio/TimelineThread";
-import { Hero } from "@/components/portfolio/Hero";
+import { Hero, HeroSidebar } from "@/components/portfolio/Hero";
 
 import { Faq } from "@/components/portfolio/Faq";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
@@ -175,6 +175,13 @@ function Index() {
 
     return (
         <div ref={rootRef} className="min-h-screen bg-background">
+            {/* ── Global Fixed Sidebar (renders above everything, z-40) ── */}
+            <div className="pointer-events-none fixed inset-0 z-40 mx-auto hidden max-w-[110rem] px-4 sm:px-6 lg:block">
+                <div className="pt-[1.5rem]">
+                    <HeroSidebar />
+                </div>
+            </div>
+
             {/*
              * When the morph is enabled the hero section is pinned via
              * position: sticky so it stays in place while the scroll-track
@@ -1169,7 +1176,19 @@ function Index() {
                         </div>
                     </section>
 
-                    <ProjectsSection projects={PROJECTS} />
+                </main>
+            </div>
+
+            {/* ── Full-width Projects Section (breaks out of sidebar layout) ── */}
+            <ProjectsSection projects={PROJECTS} />
+
+            {/* ── Resume sidebar + main content layout ── */}
+            <div
+                className="relative z-20 mx-auto flex max-w-[110rem] gap-8 px-4 sm:px-6 pointer-events-none"
+                style={{ paddingBottom: "7rem" }}
+            >
+                <aside className="hidden w-[clamp(14.5rem,15vw,17rem)] shrink-0 lg:block pointer-events-none" aria-hidden="true" />
+                <main className="min-w-0 flex-1 space-y-20 sm:space-y-28 md:space-y-40 pointer-events-auto">
 
                     <Reveal><section id="offer" className="scroll-mt-24 text-center">
                         <SectionLabel>Capabilities overview</SectionLabel>
