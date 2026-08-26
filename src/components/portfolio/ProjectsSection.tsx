@@ -110,18 +110,18 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                 <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                     {/* Offset to match the sidebar placeholder width */}
                     <div className="lg:pl-[calc(clamp(14.5rem,15vw,17rem)+2rem)]">
-                        <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
+                        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                             <div>
                                 <span className="inline-block rounded-full border border-white/20 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-white/60">
                                     Selected Work
                                 </span>
-                                <h2 className="mt-2 text-[3rem] leading-none lg:text-8xl font-black tracking-tighter text-white mb-2 lg:leading-[1.05]">
+                                <h2 className="mt-4 text-[3rem] leading-[1.1] lg:text-[5.5rem] font-black tracking-tighter text-white mb-4 lg:leading-[1.05]">
                                     Built in Webflow,
                                     <br />
                                     Made to Perform
                                 </h2>
                             </div>
-                            <p className="max-w-sm pb-2 text-[0.95rem] leading-[1.7] text-white/55 z-10 relative">
+                            <p className="max-w-sm pb-4 text-[0.95rem] leading-[1.7] text-white/55 z-10 relative">
                                 Over seven years I've helped businesses across different industries turn
                                 their ideas into websites that look and work exactly how they imagined.
                             </p>
@@ -130,7 +130,7 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                 </div>
 
                 {/* ── Horizontal Track ────────────────────────────── */}
-                <div className="-mt-4 lg:-mt-12 lg:mb-auto">
+                <div className="mt-2 lg:mt-6 lg:mb-auto">
                     <div className="mx-auto w-full max-w-[110rem] px-4 sm:px-6">
                         <div
                             ref={trackRef}
