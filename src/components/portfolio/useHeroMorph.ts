@@ -104,6 +104,13 @@ export function useHeroMorph(enabled: boolean, rootRef: RefObject<HTMLElement | 
             heroContainer = root.querySelector<HTMLElement>("[data-hero-container]");
             if (!asideEl) return;
 
+            // Apply scale to sidebar to ensure it fits the viewport BEFORE measuring slots
+            const availableHeight = window.innerHeight - 48; // 3rem padding top
+            const asideScale = Math.min(1, availableHeight / 860);
+            asideEl.style.transformOrigin = "top left";
+            asideEl.style.transform = `scale(${asideScale})`;
+            asideEl.style.willChange = "opacity, transform";
+
             pairs = [];
             fxEls = [];
             fadeEls = [];
@@ -153,7 +160,7 @@ export function useHeroMorph(enabled: boolean, rootRef: RefObject<HTMLElement | 
 
             if (asideEl) {
                 asideEl.style.opacity = "0";
-                asideEl.style.willChange = "opacity";
+                asideEl.style.willChange = "opacity, transform";
             }
         };
 
