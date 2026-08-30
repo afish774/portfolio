@@ -9,7 +9,11 @@ export default defineConfig({
         allowedHosts: true,
     },
     plugins: [
-        tanstackStart(),
+        tanstackStart({
+            server: {
+                preset: 'vercel',
+            }
+        }),
         react(),
         tailwindcss(),
         imagetools(),
