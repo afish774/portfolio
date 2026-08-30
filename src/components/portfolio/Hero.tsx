@@ -351,10 +351,14 @@ export function HeroSidebar() {
     return (
         <aside
             data-sidebar-container
-            className="hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 [@media(max-height:900px)]:gap-2 lg:flex pb-8 [@media(max-height:900px)]:pb-2 pointer-events-auto"
-            style={{ opacity: 0 }}
+            className="hidden h-fit w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 lg:flex pb-8 pointer-events-auto"
+            style={{ 
+                opacity: 0,
+                transformOrigin: "top left",
+                transform: "scale(min(1, calc((100vh - 3rem) / 850)))"
+            }}
         >
-            <div className={`p-5 [@media(max-height:900px)]:p-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
+            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -387,24 +391,24 @@ export function HeroSidebar() {
                         ))}
                     </div>
                 </div>
-                <p data-fade className={`mt-6 [@media(max-height:900px)]:mt-3 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
+                <p data-fade className={`mt-6 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
                     Working closely with your team to deliver builds that merge creativity, technical
                     excellence, and long-term value.
                 </p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 [@media(max-height:900px)]:p-3 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl [@media(max-height:900px)]:text-3xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
-                    <p className={`mt-2 [@media(max-height:900px)]:mt-1 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
+                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
+                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
-                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 [@media(max-height:900px)]:p-3 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl [@media(max-height:900px)]:text-3xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
-                    <p className={`mt-2 [@media(max-height:900px)]:mt-1 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
+                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
+                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
 
-            <nav className={`relative flex flex-col gap-1.5 [@media(max-height:900px)]:gap-1 rounded-xl p-2.5 [@media(max-height:900px)]:p-1.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
+            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
                 {/* The sliding dark background that the user requested */}
                 <div className="absolute inset-0 bg-[#1a1a1a] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
@@ -423,7 +427,7 @@ export function HeroSidebar() {
                                     else window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                             }}
-                            className="relative flex items-center gap-3.5 rounded-full px-4 py-3 [@media(max-height:900px)]:py-2 text-[18px] [@media(max-height:900px)]:text-[16px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
+                            className="relative flex items-center gap-3.5 rounded-full px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
                         >
                             {/* Sliding active indicator */}
                             {isActive && id !== "home" && (
@@ -449,7 +453,7 @@ export function HeroSidebar() {
                                 key={`1-${logo.id}-${i}`}
                                 src={logo.src}
                                 alt={logo.name}
-                                className={`h-5 [@media(max-height:900px)]:h-4 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
                             />
                         ) : (
                             <span
@@ -468,7 +472,7 @@ export function HeroSidebar() {
                                 key={`2-${logo.id}-${i}`}
                                 src={logo.src}
                                 alt={logo.name}
-                                className={`h-5 [@media(max-height:900px)]:h-4 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
                             />
                         ) : (
                             <span
@@ -490,7 +494,7 @@ export function HeroSidebar() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1500);
                 }}
-                className={`flex items-center justify-between rounded-xl px-5 py-4 [@media(max-height:900px)]:py-3 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                className={`flex items-center justify-between rounded-xl px-5 py-4 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
             >
                 <span>hello@afish.com</span>
                 <span className="font-bold">{copied ? "✓" : "⧉"}</span>
@@ -499,7 +503,7 @@ export function HeroSidebar() {
             <a
                 href="#contact"
                 data-slot="cta"
-                className="rounded-xl bg-primary py-4 [@media(max-height:900px)]:py-3 text-center font-display text-base font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
+                className="rounded-xl bg-primary py-4 text-center font-display text-base font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
                 Book a Call
             </a>
