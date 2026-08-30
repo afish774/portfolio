@@ -351,7 +351,7 @@ export function HeroSidebar() {
     return (
         <aside
             data-sidebar-container
-            className="hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(13rem,13.5vw,15.3rem)] shrink-0 flex-col gap-3 lg:flex pb-6 pointer-events-auto"
+            className="hidden h-[calc(100svh-1.5rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(13rem,13.5vw,15.3rem)] shrink-0 flex-col gap-3 lg:flex pb-6 pointer-events-auto"
             style={{ opacity: 0, scrollbarWidth: "none" }}
         >
             <div className={`p-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
