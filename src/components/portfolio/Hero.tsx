@@ -351,10 +351,10 @@ export function HeroSidebar() {
     return (
         <aside
             data-sidebar-container
-            className="hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(14.5rem,15vw,17rem)] shrink-0 flex-col gap-4 lg:flex pb-8 pointer-events-auto"
+            className="hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(13rem,13.5vw,15.3rem)] shrink-0 flex-col gap-3 lg:flex pb-6 pointer-events-auto"
             style={{ opacity: 0, scrollbarWidth: "none" }}
         >
-            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
+            <div className={`p-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -363,48 +363,48 @@ export function HeroSidebar() {
                             if (window.lenis) window.lenis.scrollTo(document.documentElement, { duration: 2.2 });
                             else window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className={`rounded-md px-3 py-1.5 font-display text-lg font-black tracking-tight text-black transition-colors duration-500 ease-in-out hover:bg-primary/0 ${isDarkSection ? "bg-[#ffeb3b]" : "bg-primary"}`}
+                        className={`rounded-md px-2.5 py-1 font-display text-base font-black tracking-tight text-black transition-colors duration-500 ease-in-out hover:bg-primary/0 ${isDarkSection ? "bg-[#ffeb3b]" : "bg-primary"}`}
                     >
                         <span className="flex items-start">
-                            AFISH<sup className="ml-[1px] mt-[4px] text-[10px] opacity-80 leading-none">®</sup>
+                            AFISH<sup className="ml-[1px] mt-[4px] text-[9px] opacity-80 leading-none">®</sup>
                         </span>
                     </button>
-                    <div className="flex gap-1.5">
+                    <div className="flex gap-1">
                         {SOCIALS.map(({ id, Icon, href }) => (
                             <a
                                 key={id}
                                 data-slot={`social-${id}`}
                                 href={href}
                                 aria-label={`Social ${id}`}
-                                className={`grid h-8 w-8 place-items-center rounded-md border transition-colors ${
+                                className={`grid h-7 w-7 place-items-center rounded-md border transition-colors ${
                                     isDarkSection 
                                         ? "border-white/10 bg-white/10 text-white/70 hover:bg-[#ffeb3b] hover:text-black" 
                                         : "border-white/10 bg-white/5 text-muted-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                                 }`}
                             >
-                                <Icon className="h-4 w-4" />
+                                <Icon className="h-[14px] w-[14px]" />
                             </a>
                         ))}
                     </div>
                 </div>
-                <p data-fade className={`mt-6 text-sm leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
+                <p data-fade className={`mt-5 text-[12.5px] leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
                     Working closely with your team to deliver builds that merge creativity, technical
                     excellence, and long-term value.
                 </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
-                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
+            <div className="grid grid-cols-2 gap-1.5">
+                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-4 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-3xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
+                    <p className={`mt-1.5 text-center text-[9px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
-                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
-                    <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
+                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-4 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-3xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
+                    <p className={`mt-1.5 text-center text-[9px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
 
-            <nav className={`relative flex flex-col gap-1.5 rounded-xl p-2.5 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
+            <nav className={`relative flex flex-col gap-1 rounded-xl p-2 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
                 <div className="absolute inset-0 bg-[#1a1a1a] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
 
@@ -422,7 +422,7 @@ export function HeroSidebar() {
                                     else window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                             }}
-                            className="relative flex items-center gap-3.5 rounded-full px-4 py-3 text-[18px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
+                            className="relative flex items-center gap-3 rounded-full px-3.5 py-2.5 text-[16px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
                         >
                             {isActive && id !== "home" && (
                                 <motion.div
@@ -432,46 +432,46 @@ export function HeroSidebar() {
                                 />
                             )}
                             
-                            <Icon data-icon-for={`nav-${id}`} className={`h-4 w-4 shrink-0 transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white/70 hover:text-white" : "text-foreground group-hover:text-primary"}`} strokeWidth={2.5} />
+                            <Icon data-icon-for={`nav-${id}`} className={`h-[14px] w-[14px] shrink-0 transition-colors duration-300 ${isActive && id !== "home" ? "text-black" : isDarkSection ? "text-white/70 hover:text-white" : "text-foreground group-hover:text-primary"}`} strokeWidth={2.5} />
                             <span data-slot={`nav-${id}`} className={`block transition-colors duration-300 ${isActive && id !== "home" ? "text-black font-bold" : isDarkSection ? "text-white/70 hover:text-white" : "text-foreground group-hover:text-primary"}`}>{label}</span>
                         </a>
                     );
                 })}
             </nav>
 
-            <div data-fade className="overflow-hidden py-1.5 flex group">
-                <div className="flex shrink-0 w-max marquee-track gap-8 pr-8">
+            <div data-fade className="overflow-hidden py-1 flex group">
+                <div className="flex shrink-0 w-max marquee-track gap-7 pr-7">
                     {[...LOGOS, ...LOGOS].map((logo, i) => (
                         logo.src ? (
                             <img
                                 key={`1-${logo.id}-${i}`}
                                 src={logo.src}
                                 alt={logo.name}
-                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                                className={`h-[18px] object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
                             />
                         ) : (
                             <span
                                 key={`1-${logo.id}-${i}`}
-                                className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
+                                className={`whitespace-nowrap text-[11px] font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
                             >
                                 {logo.name}
                             </span>
                         )
                     ))}
                 </div>
-                <div aria-hidden="true" className="flex shrink-0 w-max marquee-track gap-8 pr-8">
+                <div aria-hidden="true" className="flex shrink-0 w-max marquee-track gap-7 pr-7">
                     {[...LOGOS, ...LOGOS].map((logo, i) => (
                         logo.src ? (
                             <img
                                 key={`2-${logo.id}-${i}`}
                                 src={logo.src}
                                 alt={logo.name}
-                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                                className={`h-[18px] object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
                             />
                         ) : (
                             <span
                                 key={`2-${logo.id}-${i}`}
-                                className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
+                                className={`whitespace-nowrap text-[11px] font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
                             >
                                 {logo.name}
                             </span>
@@ -488,7 +488,7 @@ export function HeroSidebar() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1500);
                 }}
-                className={`flex items-center justify-between rounded-xl px-5 py-4 text-sm font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                className={`flex items-center justify-between rounded-xl px-4 py-3 text-[12.5px] font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
             >
                 <span>hello@afish.com</span>
                 <span className="font-bold">{copied ? "✓" : "⧉"}</span>
@@ -497,7 +497,7 @@ export function HeroSidebar() {
             <a
                 href="#contact"
                 data-slot="cta"
-                className="rounded-xl bg-primary py-4 text-center font-display text-base font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
+                className="rounded-xl bg-primary py-3.5 text-center font-display text-[14.5px] font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
                 Book a Call
             </a>
