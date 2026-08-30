@@ -122,7 +122,7 @@ export function ProjectsSection({ projects }: { projects: ProjectData[] }) {
                                 </h2>
                             </div>
                             <p className="max-w-sm pb-4 text-[0.95rem] leading-[1.7] text-white/55 z-10 relative">
-                                Over seven years I've helped businesses across different industries turn
+                                Over the past year I've helped businesses across different industries turn
                                 their ideas into websites that look and work exactly how they imagined.
                             </p>
                         </div>

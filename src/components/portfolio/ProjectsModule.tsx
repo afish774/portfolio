@@ -228,7 +228,7 @@ export default function ProjectsModule() {
                         </h2>
                     </div>
                     <p className="max-w-xs text-white/55 text-sm leading-relaxed mb-8 lg:mb-20">
-                        Over seven years I've helped businesses across different industries turn their ideas into websites that look and work exactly how they imagined.
+                        Over the past year I've helped businesses across different industries turn their ideas into websites that look and work exactly how they imagined.
                     </p>
                 </div>
 

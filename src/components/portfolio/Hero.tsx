@@ -5,8 +5,13 @@ import { motion, useScroll, useTransform, useMotionValue, type HTMLMotionProps, 
 import portrait from "@/assets/hero-portrait.png";
 import portraitWebp from "@/assets/hero-portrait.png?format=webp&quality=82&w=1024";
 import portraitWebpMobile from "@/assets/hero-portrait.png?format=webp&quality=78&w=600";
+import tronLogo from "@/assets/tron-logo.svg";
 
-const LOGOS = ["] INVERT S", "SemiconBio", "CURRI", "Omicron", "puck", "1910", "alosant", "Lilipad"];
+const LOGOS = [
+    { id: "tcs", name: "TCS", src: "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22black%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%20%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3ETata%20Consultancy%20Services%3C%2Ftitle%3E%3Cpath%20d%3D%22M24%2016.262c0-1.305-.522-2.174-1.827-3.088l-1.785-1.24c-.033-.022-.06-.045-.092-.068-.629-.473-.91-.912-.91-1.43%200-.696.567-1.13%201.371-1.13%201.022%200%201.503.477%202.111.477.479%200%20.805-.326.805-.804%200-.348-.174-.631-.631-.848-.718-.348-1.503-.48-2.35-.48-.892%200-1.676.262-2.241.697a.984.984%200%200%200%200-.001%203.64%203.64%200%200%200-.326.283l-.008.01c-.65.695-1.19%201.714-1.623%203.145l-.501%201.652c-.893%202.912-2.306%204.304-4.504%204.304-2.415%200-3.938-1.675-3.938-4.153v.026-.025c0-2.468%201.509-4.159%203.69-4.174l.03-.002a4.857%204.857%200%200%201%202.089.457c.282.13.522.174.74.174.1%200%20.192-.017.279-.041.362-.103.592-.408.592-.83%200-.326-.196-.653-.653-.87-.827-.414-1.894-.653-3.046-.653-.86%200-1.653.152-2.359.436-2.117.851-3.452%202.886-3.452%205.545l.002-.024-.001.024c0%20.931.169%201.783.479%202.536-.452.985-1.143%201.509-2.046%201.509-1.087%200-1.804-.63-1.806-2.06V9.477h2.546c.588%200%20.979-.348.979-.848s-.39-.848-.98-.848H2.09V5.563c0-.653-.435-1.088-1.044-1.088C.435%204.475%200%204.911%200%205.563v10.285c0%202.393%201.37%203.655%203.7%203.655.486.001.97-.08%201.43-.24h.005a3.49%203.49%200%200%200%201.81-1.514c1.034%201.117%202.565%201.775%204.48%201.775.999%200%201.868-.195%202.65-.607h.003c1.588-.827%202.72-2.502%203.503-5.068l.457-1.5a2.984%202.984%200%200%201-.162-.234c.308.492.785.953%201.468%201.43l1.631%201.13c.244.17.463.34.668.51.289.322.378.67.378%201.078%200%20.935-.74%201.566-1.807%201.566-1.022%200-1.893-.522-2.371-.522s-.806.325-.806.804c0%20.348.174.63.632.848.631.304%201.653.566%202.567.566%201.153%200%202.111-.348%202.785-.957a1.59%201.59%200%200%200%20.156-.161A3.104%203.104%200%200%200%2024%2016.262z%22%2F%3E%3C%2Fsvg%3E" },
+    { id: "ibm", name: "IBM", src: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
+    { id: "tron", name: "Tron Academy", src: tronLogo },
+];
 
 const SECTIONS: { id: string; label: string; Icon: LucideIcon }[] = [
     { id: "home", label: "HOME", Icon: House },
@@ -31,9 +36,11 @@ const RIGHT_NAV = [
     { label: "FAQ", href: "#faq", morphKey: "nav-faq" },
 ];
 
-const XIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+const InstagramIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
     </svg>
 );
 
@@ -46,7 +53,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 
 const SOCIALS = [
-    { id: "X", Icon: XIcon, href: "#contact" },
+    { id: "ig", Icon: InstagramIcon, href: "#contact" },
     { id: "in", Icon: LinkedinIcon, href: "#contact" },
 ];
 
@@ -310,17 +317,22 @@ export function HeroSidebar() {
                     const centerLine = window.innerHeight / 2;
                     let found = false;
                     for (let i = SECTIONS.length - 1; i >= 0; i--) {
-                        const el = document.getElementById(SECTIONS[i].id);
+                        const section = SECTIONS[i];
+                        if (!section) continue;
+                        const el = document.getElementById(section.id);
                         if (el) {
                             const rect = el.getBoundingClientRect();
                             if (rect.top <= centerLine) {
-                                setActive(SECTIONS[i].id);
+                                setActive(section.id);
                                 found = true;
                                 break;
                             }
                         }
                     }
-                    if (!found && SECTIONS.length > 0) setActive(SECTIONS[0].id);
+                    if (!found && SECTIONS.length > 0) {
+                        const firstSection = SECTIONS[0];
+                        if (firstSection) setActive(firstSection.id);
+                    }
                     ticking = false;
                 });
                 ticking = true;
@@ -383,11 +395,11 @@ export function HeroSidebar() {
 
             <div className="grid grid-cols-2 gap-2">
                 <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>80+</p>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
                     <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
                 <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>7+</p>
+                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
                     <p className={`mt-2 text-center text-[10px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
@@ -429,15 +441,43 @@ export function HeroSidebar() {
                 })}
             </nav>
 
-            <div data-fade className="overflow-hidden py-1.5">
-                <div className="flex w-max marquee-track gap-8 px-1">
+            <div data-fade className="overflow-hidden py-1.5 flex group">
+                <div className="flex shrink-0 w-max marquee-track gap-8 pr-8">
                     {[...LOGOS, ...LOGOS].map((logo, i) => (
-                        <span
-                            key={`${logo}-${i}`}
-                            className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
-                        >
-                            {logo}
-                        </span>
+                        logo.src ? (
+                            <img
+                                key={`1-${logo.id}-${i}`}
+                                src={logo.src}
+                                alt={logo.name}
+                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                            />
+                        ) : (
+                            <span
+                                key={`1-${logo.id}-${i}`}
+                                className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
+                            >
+                                {logo.name}
+                            </span>
+                        )
+                    ))}
+                </div>
+                <div aria-hidden="true" className="flex shrink-0 w-max marquee-track gap-8 pr-8">
+                    {[...LOGOS, ...LOGOS].map((logo, i) => (
+                        logo.src ? (
+                            <img
+                                key={`2-${logo.id}-${i}`}
+                                src={logo.src}
+                                alt={logo.name}
+                                className={`h-5 object-contain transition-all duration-300 ${isDarkSection ? "brightness-0 invert opacity-50" : "brightness-0 invert-0 opacity-70"}`}
+                            />
+                        ) : (
+                            <span
+                                key={`2-${logo.id}-${i}`}
+                                className={`whitespace-nowrap text-xs font-black uppercase tracking-widest ${transitionClass} ${isDarkSection ? "text-white/50" : "text-foreground"}`}
+                            >
+                                {logo.name}
+                            </span>
+                        )
                     ))}
                 </div>
             </div>
@@ -536,7 +576,7 @@ export function Hero({ morphActive = false }: { morphActive?: boolean }) {
                                 >
                                     <span className="origin-left scale-x-[1.12] font-display text-[clamp(3.2rem,4.1vw,5rem)] leading-[0.65] font-black italic text-primary">W</span>
                                     <span className="font-display text-[clamp(0.85rem,1.15vw,1.35rem)] leading-[1.18] font-bold text-white">
-                                        80+
+                                        6+
                                         <br />
                                         Projects
                                     </span>
@@ -544,7 +584,7 @@ export function Hero({ morphActive = false }: { morphActive?: boolean }) {
                                 <StatCard
                                     delayMs={CUE.cards + 140}
                                     morphKey="stat-2"
-                                    value={7}
+                                    value={1}
                                     suffix="+"
                                     label="Years of experience"
                                     className="ml-[clamp(2.9rem,4.4vw,5.6rem)] mt-7 w-[clamp(10rem,9.7vw,12rem)] px-6 py-7 text-center"

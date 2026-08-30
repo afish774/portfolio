@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { X, Check, Home } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal, LineReveal, PremiumLineReveal, RollingYear, CardScrollReveal, CheckpointScrollReveal } from "@/components/portfolio/Reveal";
@@ -161,6 +161,39 @@ function Index() {
     const rootRef = useRef<HTMLDivElement>(null);
     const morphEnabled = useMorphEnabled();
     const morphReady = useHeroMorph(morphEnabled, rootRef);
+
+    useLayoutEffect(() => {
+        // 2. Redirect/scroll perfectly to the landing animation on refresh
+        // Strip the hash from the URL immediately so the browser doesn't anchor-jump
+        if (window.location.hash) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        // @ts-ignore
+        if (window.lenis) window.lenis.scrollTo(0, { immediate: true });
+
+        // 1. Lock the landing page animation (prevent scrolling for the first ~2.8s)
+        document.body.style.overflow = "hidden";
+        // @ts-ignore
+        if (window.lenis) window.lenis.stop();
+
+        const timer = setTimeout(() => {
+            document.body.style.overflow = "";
+            // @ts-ignore
+            if (window.lenis) window.lenis.start();
+        }, 2800); // 2.5s is the footer cue in Hero.tsx, plus 300ms buffer
+
+        return () => {
+            clearTimeout(timer);
+            document.body.style.overflow = "";
+            // @ts-ignore
+            if (window.lenis) window.lenis.start();
+        };
+    }, []);
 
     // State for expanding cards
     const [card1Expanded, setCard1Expanded] = useState(false);
