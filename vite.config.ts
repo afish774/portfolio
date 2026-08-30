@@ -3,16 +3,16 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { imagetools } from "vite-imagetools";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
     server: {
         allowedHosts: true,
     },
     plugins: [
-        tanstackStart({
-            server: {
-                preset: 'vercel',
-            }
+        tanstackStart(),
+        nitro({
+            preset: 'vercel',
         }),
         react(),
         tailwindcss(),
@@ -24,4 +24,3 @@ export default defineConfig({
         },
     },
 });
-
