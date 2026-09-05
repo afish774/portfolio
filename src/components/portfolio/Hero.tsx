@@ -351,10 +351,10 @@ export function HeroSidebar() {
     return (
         <aside
             data-sidebar-container
-            className="hidden h-[calc(100svh-1.5rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(15rem,16vw,18rem)] shrink-0 flex-col gap-4 lg:flex pb-6 pointer-events-auto"
+            className="hidden h-[calc(100svh-1.5rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden w-[clamp(15rem,16vw,18rem)] shrink-0 flex-col gap-[min(0.75rem,1.5svh)] lg:flex pb-[min(1.5rem,3svh)] pointer-events-auto"
             style={{ opacity: 0, scrollbarWidth: "none" }}
         >
-            <div className={`p-5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
+            <div className={`shrink-0 p-[min(1rem,2.5svh)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[2rem] border border-white/5" : "bg-card rounded-xl border border-transparent"}`}>
                 <div className="flex items-center justify-between">
                     <button
                         data-slot="wordmark"
@@ -387,24 +387,24 @@ export function HeroSidebar() {
                         ))}
                     </div>
                 </div>
-                <p data-fade className={`mt-5 text-[12.5px] leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
+                <p data-fade className={`mt-[min(0.75rem,1.5svh)] text-[clamp(11px,1.5svh,12.5px)] leading-relaxed text-left ${transitionClass} ${isDarkSection ? "text-white/60" : "text-muted-foreground"}`}>
                     Working closely with your team to deliver builds that merge creativity, technical
                     excellence, and long-term value.
                 </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
-                    <p className={`mt-2 text-center text-[9px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
+            <div className="shrink-0 grid grid-cols-2 gap-[min(0.5rem,1svh)]">
+                <div data-slot="stat-1" className={`relative flex flex-col items-center justify-center p-[min(1rem,2.5svh)] overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-[clamp(2rem,5svh,2.25rem)] font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>6+</p>
+                    <p className={`mt-[min(0.375rem,1svh)] text-center text-[clamp(7.5px,1.2svh,9px)] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Projects<br />Delivered</p>
                 </div>
-                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-5 overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
-                    <p className={`font-display text-4xl font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
-                    <p className={`mt-2 text-center text-[9px] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
+                <div data-slot="stat-2" className={`relative flex flex-col items-center justify-center p-[min(1rem,2.5svh)] overflow-hidden border shadow-sm before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isDarkSection ? "bg-[#1a1a1a] rounded-[1.5rem] border-white/5" : "bg-card rounded-xl border-white/5"}`}>
+                    <p className={`font-display text-[clamp(2rem,5svh,2.25rem)] font-black z-10 ${isDarkSection ? "text-[#ffeb3b]" : "text-primary"}`}>1+</p>
+                    <p className={`mt-[min(0.375rem,1svh)] text-center text-[clamp(7.5px,1.2svh,9px)] font-bold uppercase tracking-widest z-10 ${transitionClass} ${isDarkSection ? "text-white/90" : "text-muted-foreground"}`}>Years of<br />Experience</p>
                 </div>
             </div>
 
-            <nav className={`relative flex flex-col gap-1.5 rounded-[1.25rem] p-3 overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
+            <nav className={`shrink-0 relative flex flex-col gap-[min(0.25rem,0.5svh)] rounded-[1.25rem] p-[min(0.5rem,1.5svh)] overflow-hidden ${transitionClass} ${isDarkSection ? "bg-[#1a1a1a]" : "bg-card"}`}>
                 <div className="absolute inset-0 bg-[#1a1a1a] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" 
                      style={{ transform: active === "projects" ? "translateY(0%)" : "translateY(100%)" }} />
 
@@ -422,7 +422,7 @@ export function HeroSidebar() {
                                     else window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                             }}
-                            className="relative flex items-center gap-3.5 rounded-full px-4 py-3.5 text-[16px] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
+                            className="relative flex items-center gap-3.5 rounded-full px-4 py-[min(0.5rem,1.2svh)] text-[clamp(13px,1.8svh,16px)] font-display font-bold uppercase tracking-wider leading-none transition-colors group z-10"
                         >
                             {isActive && id !== "home" && (
                                 <motion.div
@@ -439,7 +439,7 @@ export function HeroSidebar() {
                 })}
             </nav>
 
-            <div data-fade className="overflow-hidden py-1 flex group">
+            <div data-fade className="shrink-0 overflow-hidden py-[min(0.25rem,0.5svh)] flex group">
                 <div className="flex shrink-0 w-max marquee-track gap-7 pr-7">
                     {[...LOGOS, ...LOGOS].map((logo, i) => (
                         logo.src ? (
@@ -488,7 +488,7 @@ export function HeroSidebar() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1500);
                 }}
-                className={`flex items-center justify-between rounded-xl px-5 py-3.5 text-[13px] font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                className={`shrink-0 flex items-center justify-between rounded-xl px-5 py-[min(0.75rem,1.8svh)] text-[clamp(11.5px,1.6svh,13px)] font-medium ${transitionClass} ${isDarkSection ? "bg-[#222] text-white/50 hover:bg-[#333]" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`}
             >
                 <span>hello@afish.com</span>
                 <span className="font-bold">{copied ? "✓" : "⧉"}</span>
@@ -497,7 +497,7 @@ export function HeroSidebar() {
             <a
                 href="#contact"
                 data-slot="cta"
-                className="rounded-xl bg-primary py-4 text-center font-display text-[15px] font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
+                className="shrink-0 rounded-xl bg-primary py-[min(0.875rem,2svh)] text-center font-display text-[clamp(13px,1.8svh,15px)] font-black tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
                 Book a Call
             </a>
