@@ -88,7 +88,7 @@ function TimelineCard({
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-8% 0px -8% 0px" });
 
-    const layout = CARD_LAYOUT[index];
+    const layout = CARD_LAYOUT[index] ?? CARD_LAYOUT[0]!;
 
     return (
         <div
